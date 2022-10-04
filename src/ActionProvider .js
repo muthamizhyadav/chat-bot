@@ -4,7 +4,7 @@ class ActionProvider {
     this.setState = setStateFunc;
   }
 
-  NameHandler = (lowerCase) => {
+  NameHandler = lowerCase => {
     const message = this.createChatBotMessage(`Welcome ${lowerCase} `);
     this.setChatbotMessage(message);
   };
@@ -19,23 +19,21 @@ class ActionProvider {
     this.setChatbotMessage(message);
   };
 
-  handleFresher = () => {
-    const message = this.createChatBotMessage(
-      "please Enter Your Deatils with your educations status:",
-      {
-        
-      }
-    );
+  handleFresher = mesg => {
+    const message = this.createChatBotMessage("Kindly fill your Detail's", {
+      widget: "handleFresher"
+    });
+    this.setChatbotMessage(message);
   };
 
-  NameErrorHandler = (lowerCase) => {
+  NameErrorHandler = lowerCase => {
     const message = this.createChatBotMessage(
       `Hey ${lowerCase} , Please Enter valid details ?`
     );
     this.setChatbotMessage(message);
   };
-  setChatbotMessage = (message) => {
-    this.setState((state) => ({
+  setChatbotMessage = message => {
+    this.setState(state => ({
       ...state,
       messages: [...state.messages, message]
     }));
